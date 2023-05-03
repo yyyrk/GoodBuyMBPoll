@@ -6,7 +6,7 @@ import time
 
 from pyModbusTCP.client import ModbusClient
 
-MOPSadr = 1 #Адрес МОПС
+MOPSadr = 9 #Адрес МОПС
 OpnPort = True #Открыть порт
 ClosePort = False #Закрыть порт
 S341ip = "127.0.0.1" #ip адрес S341
@@ -38,17 +38,16 @@ while Neprer:
     #Reg92 = c.read_holding_registers(92, 8) #Таймер 3, мсек
     #Reg100 = c.read_holding_registers(100, 8) #Таймер 4, мсек
     RegAll = c.read_holding_registers(3, 104) #Чтение всех регистров одного устройства
-     # SH1 = RegAll[0]
-     # SH2 = RegAll[1]
-     # SH3 = RegAll[2]
-     # SH4 = RegAll[3]
-     # SH5 = RegAll[4]
-     # SH6 = RegAll[5]
-     # SH7 = RegAll[6]
-# SH8 = RegAll[7]
+    # SH1 = RegAll[0]
+    # SH2 = RegAll[1]
+    # SH3 = RegAll[2]
+    # SH4 = RegAll[3]
+    # SH5 = RegAll[4]
+    # SH6 = RegAll[5]
+    # SH7 = RegAll[6]
+    # SH8 = RegAll[7]
     print(f'Шлейф 1',f'Шлейф2',f'Шлейф 3',f'Шлейф 4',f'Шлейф 5',f'Шлейф 6',f'Шлейф 7',f'Шлейф 8')
-    print(f'Состояние шлейфа',{Reg3})
-# print(f'Состояние шлейфа', RegAll[0], RegAll[1], RegAll[2], RegAll[3], RegAll[4], RegAll[5], RegAll[6], RegAll[7])
+    print(f'Состояние шлейфа,{Reg3}',Reg3,Reg3,Reg3,Reg3,Reg3,Reg3,Reg3)
     time.sleep(1)
 
 

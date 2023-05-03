@@ -1,0 +1,56 @@
+# This is a sample Python script.
+import time
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+from pyModbusTCP.client import ModbusClient
+
+MOPSadr = 1 #Адрес МОПС
+OpnPort = True #Открыть порт
+ClosePort = False #Закрыть порт
+S341ip = "127.0.0.1" #ip адрес S341
+S341port = 502 #Порт S341
+Neprer = True #Читать непрерывно
+
+c = ModbusClient(host=S341ip, port=S341port, unit_id=MOPSadr, timeout=3.0, debug=False, auto_open=OpnPort, auto_close=ClosePort)
+
+#def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+#    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
+
+# Press the green button in the gutter to run the script.
+#if __name__ == '__main__':
+#    print_hi('PyCharm')
+while Neprer:
+    Reg3 = c.read_holding_registers(3, 8)   #Текущее состояние (1-обрыв и т.д.)
+    #Reg12 = c.read_holding_registers(12, 8)   #Запомненное состояние (1-обрыв и т.д.)
+    #Reg20 = c.read_holding_registers(20, 8) #Текущий ток,мкА
+    #Reg28 = c.read_holding_registers(28, 8)    #Команда управления (1-перезапуск и т.д.)
+    #Reg36 = c.read_holding_registers(36, 8) #Стратегия работы (2-пожарный без перезапроса и т.д.)
+    #Reg44 = c.read_holding_registers(44, 8) #Порог 1,мкА (обрыв-норма)
+    #Reg52 = c.read_holding_registers(52, 8) #Порог 2,мкА (норма-внимание)
+    #Reg60 = c.read_holding_registers(60, 8) #Порог 3,мкА (внимание-пожар)
+    #Reg68 = c.read_holding_registers(68, 8) #Порог 4,мкА (пожар-КЗ)
+    #Reg76 = c.read_holding_registers(76, 8) #Таймер 1, мсек
+    #Reg84 = c.read_holding_registers(84, 8) #Таймер 2, мсек
+    #Reg92 = c.read_holding_registers(92, 8) #Таймер 3, мсек
+    #Reg100 = c.read_holding_registers(100, 8) #Таймер 4, мсек
+    RegAll = c.read_holding_registers(3, 104) #Чтение всех регистров одного устройства
+     # SH1 = RegAll[0]
+     # SH2 = RegAll[1]
+     # SH3 = RegAll[2]
+     # SH4 = RegAll[3]
+     # SH5 = RegAll[4]
+     # SH6 = RegAll[5]
+     # SH7 = RegAll[6]
+# SH8 = RegAll[7]
+    print(f'Шлейф 1',f'Шлейф2',f'Шлейф 3',f'Шлейф 4',f'Шлейф 5',f'Шлейф 6',f'Шлейф 7',f'Шлейф 8')
+    print(f'Состояние шлейфа',{Reg3})
+# print(f'Состояние шлейфа', RegAll[0], RegAll[1], RegAll[2], RegAll[3], RegAll[4], RegAll[5], RegAll[6], RegAll[7])
+    time.sleep(1)
+
+
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -3,6 +3,7 @@ from pyModbusTCP.client import ModbusClient
 import time
 import sys
 
+
 stat = [0,0,0,0,0,0,0,0]
 ##stat1 = 1
 ##stat2 = 1
